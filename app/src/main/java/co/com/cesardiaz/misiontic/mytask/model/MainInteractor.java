@@ -12,12 +12,17 @@ public class MainInteractor implements MainMVP.Model {
 
     public MainInteractor() {
         tempItems = new ArrayList<>();
-        tempItems.add(new TaskItem("do the shopping", "november 20, 2021") );
 
     }
 
     @Override
     public List<TaskItem> getTask() {
-        return tempItems;
+
+        return new ArrayList<>(tempItems) ;
+    }
+
+    @Override
+    public void saveTask(TaskItem task) {
+        tempItems.add(task);
     }
 }
