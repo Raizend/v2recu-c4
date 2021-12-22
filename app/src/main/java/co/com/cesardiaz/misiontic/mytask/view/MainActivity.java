@@ -46,6 +46,7 @@ public class MainActivity extends AppCompatActivity implements MainMVP.View {
         etNewTask = findViewById(R.id.et_new_task);
 
         taskAdapter = new TaskAdapter();
+        taskAdapter.setListener(item -> presenter.taskItemclicked(item));
         rvTasks = findViewById(R.id.rv_tasks);
         rvTasks.setLayoutManager(new LinearLayoutManager(MainActivity.this));
         rvTasks.setAdapter(taskAdapter);
@@ -64,5 +65,10 @@ public class MainActivity extends AppCompatActivity implements MainMVP.View {
     @Override
     public void addTaskToList(TaskItem task) {
         taskAdapter.addItem(task);
+    }
+
+    @Override
+    public void updateTask(TaskItem task) {
+        taskAdapter.updateTask(task);
     }
 }

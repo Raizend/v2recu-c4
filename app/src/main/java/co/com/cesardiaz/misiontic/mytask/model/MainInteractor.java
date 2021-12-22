@@ -6,7 +6,7 @@ import java.util.List;
 import co.com.cesardiaz.misiontic.mytask.mvp.MainMVP;
 import co.com.cesardiaz.misiontic.mytask.view.dto.TaskItem;
 
-public class MainInteractor implements MainMVP.Model {
+public abstract class MainInteractor implements MainMVP.Model {
 
     private List<TaskItem> tempItems;
 
@@ -17,8 +17,7 @@ public class MainInteractor implements MainMVP.Model {
 
     @Override
     public List<TaskItem> getTask() {
-
-        return new ArrayList<>(tempItems) ;
+        return new ArrayList<>(tempItems);
     }
 
     @Override
@@ -26,3 +25,5 @@ public class MainInteractor implements MainMVP.Model {
         tempItems.add(task);
     }
 }
+
+
