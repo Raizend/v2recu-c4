@@ -46,8 +46,8 @@ public class MainPresenter implements MainMVP.Presenter {
     @Override
     public void taskItemClicked(TaskItem task) {
         String message = task.getState() == TaskState.PENDING
-                ? "Desea marcar como terminada esta tarea"
-                : "Desea marcar como pendiente esta tarea";
+                ? "¿Desea marcar como terminada esta tarea?"
+                : "¿Desea marcar como pendiente esta tarea?";
         view.showConfirmDialog(message, task);
     }
 
@@ -61,11 +61,8 @@ public class MainPresenter implements MainMVP.Presenter {
 
     @Override
     public void taskItemLongClicked(TaskItem task) {
-        String message = task.getState() == TaskState.PENDING
-                ? "Desea marcar como terminada esta tarea"
-                : "Desea marcar como pendiente esta tarea";
 
-        view.showDeleteDialog(message, task);
+        view.showDeleteDialog("¿Desea eliminar esta tarea?", task);
     }
 
     @Override
