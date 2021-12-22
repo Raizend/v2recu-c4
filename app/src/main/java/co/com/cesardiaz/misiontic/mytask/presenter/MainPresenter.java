@@ -13,8 +13,8 @@ import co.com.cesardiaz.misiontic.mytask.view.dto.TaskState;
 
 public class MainPresenter implements MainMVP.Presenter {
 
-    private MainMVP.View view;
-    private MainMVP.Model model;
+    public final MainMVP.View view;
+    private  final MainMVP.Model model;
 
     public MainPresenter(MainMVP.View view){
         this.view = view;
@@ -44,10 +44,33 @@ public class MainPresenter implements MainMVP.Presenter {
     }
 
     @Override
-    public void taskItemclicked(TaskItem item) {
-        item.setState(TaskState.DONE);
+    public void taskItemClicked(TaskItem task) {
+        String message = task.getState() == TaskState.PENDING
+                ? "Desea marcar como terminada esta tarea"
+                : "Desea marcar como pendiente esta tarea";
+        view.showConfirmDialog(message, task);
+    }
 
-        model.updateTask(item);
-        view.updateTask(item);
+    @Override
+    public void updateTask(TaskItem task) {
+        task.setState(task.getState() == TaskState.PENDING ?  TaskState.DONE : TaskState.PENDING );
+
+        model.updateTask(task);
+        view.updateTask(task);
+    }
+
+    @Override
+    public void taskItemLongClicked(TaskItem task) {
+        String message = task.getState() == TaskState.PENDING
+                ? "Desea marcar como terminada esta tarea"
+                : "Desea marcar como pendiente esta tarea";
+
+        view.showDeleteDialog(message, task);
+    }
+
+    @Override
+    public void deleteTask(TaskItem task) {
+        model.deleteTask(task);
+        view.deleteTask(task);
     }
 }
