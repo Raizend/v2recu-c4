@@ -61,8 +61,9 @@ public class MainPresenter implements MainMVP.Presenter {
 
     @Override
     public void taskItemLongClicked(TaskItem task) {
-
-        view.showDeleteDialog("¿Desea eliminar esta tarea?", task);
+        if (task.getState() == TaskState.DONE) {
+            view.showDeleteDialog("¿Desea eliminar esta tarea?", task);
+        }
     }
 
     @Override
