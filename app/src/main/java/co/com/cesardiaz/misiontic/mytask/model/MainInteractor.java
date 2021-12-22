@@ -11,6 +11,7 @@ public class MainInteractor implements MainMVP.Model {
     private List<TaskItem> tempItems;
 
     public MainInteractor() {
+
         tempItems = new ArrayList<>();
 
     }

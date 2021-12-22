@@ -13,6 +13,7 @@ import com.google.android.material.textfield.TextInputLayout;
 import java.util.List;
 
 import co.com.cesardiaz.misiontic.mytask.R;
+import co.com.cesardiaz.misiontic.mytask.model.AdminSqliteOpenHelper;
 import co.com.cesardiaz.misiontic.mytask.mvp.MainMVP;
 import co.com.cesardiaz.misiontic.mytask.presenter.MainPresenter;
 import co.com.cesardiaz.misiontic.mytask.view.adapter.TaskAdapter;
@@ -20,6 +21,7 @@ import co.com.cesardiaz.misiontic.mytask.view.dto.TaskItem;
 
 public class MainActivity extends AppCompatActivity implements MainMVP.View {
 
+    private AdminSqliteOpenHelper admin;
     private TextInputLayout tilNewTask;
     private TextInputEditText etNewTask;
     private RecyclerView rvTasks;
@@ -32,6 +34,7 @@ public class MainActivity extends AppCompatActivity implements MainMVP.View {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
 
         presenter = new MainPresenter(MainActivity.this);
 
